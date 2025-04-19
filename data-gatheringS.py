@@ -1,9 +1,10 @@
 import csv
 import urllib.request
 import os
+from datetime import datetime
 
 # CSV file name
-csv_file = 'VehicleGroupsIDs.csv'  # Make sure this is in the same directory
+csv_file = '/home/vincle/data-gather/VehicleGroupsIDs.csv'  # Full path for cron
 
 # Base URL
 base_url = "https://busdata.cs.pdx.edu/api/getBreadCrumbs?vehicle_id="
@@ -29,11 +30,16 @@ with open(csv_file, 'r') as file:
                     filename = os.path.join(output_dir, f"{vehicle_id}.json")
                     with open(filename, 'w') as f:
                         f.write(data)
-                    print(f"Downloaded: {filename}")
+                    # Uncomment if you want to log each success
+                    # print(f"Downloaded: {filename}")
                     count += 1
             except Exception as e:
-                print(f"Failed for vehicle {vehicle_id}: {e}")
+                # Uncomment if you want to log each error
+                # print(f"Failed for vehicle {vehicle_id}: {e}")
                 failed += 1
 
+end_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+print(f"Script finished at: {end_time}")
 print(f"{count} files downloaded")
 print(f"{failed} files not found")
+
