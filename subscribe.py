@@ -59,7 +59,7 @@ with subscriber:
         end_time = time.time()
         streaming_pull_future.cancel()
         streaming_pull_future.result()
-        print(f"\n✅ Finished receiving messages.")
-        print(f"📦 Total messages received: {message_counter}")
-        print(f"⏱️ Time taken: {end_time - start_time:.2f} seconds")
+        print(f"\n Finished receiving messages.")
+        print(f" Total messages received: {message_counter}")
+        print(f" Time taken: {end_time - start_time:.2f} seconds")
 
