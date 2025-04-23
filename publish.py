@@ -3,13 +3,12 @@ from concurrent import futures
 from google.oauth2 import service_account
 from google.cloud import pubsub_v1
 
-# ✅ Replace with your real service account key file
+
 SERVICE_ACCOUNT_FILE = "dataeng-project-assignment-1-e99e41137ae5.json"
 
-# ✅ Your actual GCP project ID
 PROJECT_ID = "dataeng-project-assignment-1"
 
-# ✅ Your Pub/Sub topic name
+
 TOPIC_ID = "breadcrumbs"
 
 def future_callback(future):
@@ -25,7 +24,7 @@ pubsub_creds = service_account.Credentials.from_service_account_file(SERVICE_ACC
 publisher = pubsub_v1.PublisherClient(credentials=pubsub_creds)
 topic_path = publisher.topic_path(PROJECT_ID, TOPIC_ID)
 
-# ✅ Load your data file
+
 with open("my_data.json", "r") as f:
     records = json.load(f)
 
@@ -47,5 +46,5 @@ for record in records:
 for future in futures.as_completed(future_list):
     continue
 
-print("✅ All records published.")
+print(" All records published.")
 
