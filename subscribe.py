@@ -45,12 +45,12 @@ def callback(message: pubsub_v1.subscriber.message.Message) -> None:
             print(f"📩 Received #{message_counter} message(s).")
 
     except Exception as e:
-        print(f"❌ Error processing message: {e}")
+        print(f" Error processing message: {e}")
         message.nack()
 
 # === LISTENING ===
 streaming_pull_future = subscriber.subscribe(subscription_path, callback=callback)
-print(f"👂 Listening for messages on {subscription_path}...\n")
+print(f" Listening for messages on {subscription_path}...\n")
 
 with subscriber:
     try:
