@@ -4,7 +4,7 @@ def db_connect():
     return psycopg2.connect(
         dbname="postgres",
         user="postgres",
-        password="12345",
+        password='postgres',
         host="localhost"
     )
 def insert_trip_and_breadcrumb(conn, trip_id, vehicle_id, latitude, longitude, tstamp, speed):
