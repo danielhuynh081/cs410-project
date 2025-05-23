@@ -1,76 +1,66 @@
 import os
-import json
-from datetime import datetime, timedelta
-from db_utils import db_connect, insert_trip_and_breadcrumb
+import pandas as pd
+import io
+from db_utils import db_connect
 
 DATA_DIR = "/home/dahuynh/dataeng-pipeline"
 
-
 def process_file(filepath, conn):
-    count_loaded = 0
-    prev_rows ={}
-    with open(filepath, 'r') as f:
-        for line in f:
-            try:
-                if not line.strip():
-                    continue
+    print(f"\n Processing: {filepath}")
+    try:
+        df = pd.read_json(filepath)
 
-                data = json.loads(line)
+        # Convert timestamp
+        df['TIMESTAMP'] = pd.to_datetime(df['OPD_DATE'], format='%d%b%Y:%H:%M:%S', errors='coerce') + pd.to_timedelta(df['ACT_TIME'], unit='s')
+        df = df.drop(columns=['OPD_DATE', 'ACT_TIME'])
 
-                # Only skip rows missing critical fields
-                required_fields = ['EVENT_NO_TRIP', 'VEHICLE_ID', 'ACT_TIME', 'OPD_DATE', 'METERS']
-                missing = [field for field in required_fields if data.get(field) is None]
-                if missing:
-                    print(f"\nSkipping row in {filepath}: missing fields -> {missing}")
-                    print("Raw data:", data)
-                    continue
+        # Calculate speed
+        df['dMETERS'] = df['METERS'].diff()
+        df['dTIMESTAMP'] = df['TIMESTAMP'].diff().dt.total_seconds()
+        df['SPEED'] = df['dMETERS'] / df['dTIMESTAMP']
+        df.at[0, 'SPEED'] = df.at[1, 'SPEED']
+        df = df.drop(columns=['dMETERS', 'dTIMESTAMP'])
 
-                meters = int(data['METERS'])
-                trip_id = int(data['EVENT_NO_TRIP'])
-                vehicle_id = int(data['VEHICLE_ID'])
-                latitude = float(data['GPS_LATITUDE']) if data.get('GPS_LATITUDE') is not None else None
-                longitude = float(data['GPS_LONGITUDE']) if data.get('GPS_LONGITUDE') is not None else None
-                act_time = int(data['ACT_TIME'])
-                opd_date = data['OPD_DATE']
+        # Select + rename columns for DB
+        df = df[['EVENT_NO_TRIP', 'VEHICLE_ID', 'GPS_LATITUDE', 'GPS_LONGITUDE', 'TIMESTAMP', 'SPEED']]
+        df.columns = ['trip_id', 'vehicle_id', 'latitude', 'longitude', 'tstamp', 'speed']
 
-                # Timestamp/speed
-                date_obj = datetime.strptime(opd_date.split(":")[0], "%d%b%Y")
-                timestamp = date_obj + timedelta(seconds=act_time)
-                
-                speed = 0.0
-                if trip_id in prev_rows:
-                    prev = prev_rows[trip_id]
-                    delta_meters = meters - prev['meters']
-                    delta_time = act_time - prev['act_time']
-                    if delta_time > 0:
-                        speed = delta_meters / delta_time
+        # Insert unique trip_ids into trip table
+        trip_ids = df[['trip_id', 'vehicle_id']].drop_duplicates()
+        with conn.cursor() as cur:
+            for _, row in trip_ids.iterrows():
+                cur.execute("""
+                    INSERT INTO trip (trip_id, route_id, vehicle_id, service_key, direction)
+                    VALUES (%s, NULL, %s, NULL, NULL)
+                    ON CONFLICT (trip_id) DO NOTHING;
+                """, (row['trip_id'], row['vehicle_id']))
+        conn.commit()
 
+        # Convert breadcrumb rows to CSV (in memory)
+        csv_buf = io.StringIO()
+        df[['tstamp', 'latitude', 'longitude', 'speed', 'trip_id']].to_csv(csv_buf, index=False, header=False)
+        csv_buf.seek(0)
 
-                prev_rows[trip_id] = {'meters': meters, 'act_time': act_time}
+        # Bulk insert to breadcrumb
+        with conn.cursor() as cur:
+            cur.copy_from(csv_buf, 'breadcrumb', sep=',')
+        conn.commit()
 
-                insert_trip_and_breadcrumb(conn, trip_id, vehicle_id, latitude, longitude, timestamp, speed)
-                count_loaded += 1
+        print(f" {len(df)} breadcrumbs loaded for file: {os.path.basename(filepath)}")
 
-                if count_loaded % 5000 == 0:
-                    print(f"{count_loaded} records loaded from {filepath}")
-
-            except Exception as e:
-                print(f"Skipping row in {filepath}: {e}")
-                continue
-
-    print(f"Finished {filepath}: {count_loaded} records loaded.\n")
-
+    except Exception as e:
+        conn.rollback()
+        print(f" Failed to process {filepath}: {e}")
 
 def main():
     conn = db_connect()
     for filename in sorted(os.listdir(DATA_DIR)):
         if filename.endswith(".json") and "breadcrumbs" in filename:
             filepath = os.path.join(DATA_DIR, filename)
-            print(f"\nProcessing {filepath}")
             process_file(filepath, conn)
     conn.close()
 
-
 if __name__ == "__main__":
     main()
-
+                                                                                                                                                                                                                                                                                                                                   65,0-1        Bot
+                                                                                                                                                                       11,21         Top
