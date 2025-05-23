@@ -42,7 +42,7 @@ def callback(message: pubsub_v1.subscriber.message.Message) -> None:
         message_counter += 1
 
         if message_counter <= 5 or message_counter % 10000 == 0:
-            print(f"📩 Received #{message_counter} message(s).")
+            print(f" Received #{message_counter} message(s).")
 
     except Exception as e:
         print(f" Error processing message: {e}")
