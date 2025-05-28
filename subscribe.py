@@ -8,7 +8,7 @@ from concurrent.futures import TimeoutError
 from google.oauth2 import service_account
 from google.cloud import pubsub_v1
 from db_utils import db_connect
-from validations import run_all_validations  # <-- your validation functions
+from validations import run_all_validations
 
 # === CONFIG ===
 SERVICE_ACCOUNT_FILE = '/home/dahuynh/dataeng-pipeline/dataeng-project-assignment-1-e99e41137ae5.json'
@@ -26,16 +26,15 @@ message_counter = 0
 def callback(message: pubsub_v1.subscriber.message.Message) -> None:
     global message_counter
     try:
-        # Decode and load record
         record = json.loads(message.data.decode("utf-8"))
 
-        # Step 1: Validate the record
+        #  Step 1: Validation
         if not run_all_validations(record):
-            print("❌ Record failed validation. Skipping...")
+            print(" Record failed validation. Skipping...")
             message.ack()
             return
 
-        # Step 2: Transform the record
+        #  Step 2: Transformation
         df = pd.DataFrame([record])
         df['TIMESTAMP'] = pd.to_datetime(df['OPD_DATE'], format='%d%b%Y:%H:%M:%S', errors='coerce') + pd.to_timedelta(df['ACT_TIME'], unit='s')
         df = df.drop(columns=['OPD_DATE', 'ACT_TIME'])
@@ -50,18 +49,26 @@ def callback(message: pubsub_v1.subscriber.message.Message) -> None:
         df.columns = ['trip_id', 'vehicle_id', 'latitude', 'longitude', 'tstamp', 'speed']
         row = df.iloc[0]
 
-        # Step 3: Upload to DB
+        #  Step 3: Convert to native types
+        trip_id = int(row['trip_id'])
+        vehicle_id = int(row['vehicle_id'])
+        latitude = float(row['latitude'])
+        longitude = float(row['longitude'])
+        tstamp = row['tstamp'].to_pydatetime()
+        speed = float(row['speed'])
+
+        #  Step 4: Insert into DB
         with conn.cursor() as cur:
             cur.execute("""
                 INSERT INTO trip (trip_id, route_id, vehicle_id, service_key, direction)
                 VALUES (%s, NULL, %s, NULL, NULL)
                 ON CONFLICT (trip_id) DO NOTHING;
-            """, (row['trip_id'], row['vehicle_id']))
+            """, (trip_id, vehicle_id))
 
             cur.execute("""
                 INSERT INTO breadcrumb (tstamp, latitude, longitude, speed, trip_id)
                 VALUES (%s, %s, %s, %s, %s);
-            """, (row['tstamp'], row['latitude'], row['longitude'], row['speed'], row['trip_id']))
+            """, (tstamp, latitude, longitude, speed, trip_id))
 
         conn.commit()
         message.ack()
@@ -87,4 +94,5 @@ while True:
         except TimeoutError:
             print(" Timeout reached. Restarting subscriber...")
             streaming_pull_future.cancel()
-            streaming_pull_future.result()
+            streaming_pull_future.result()                                                                                                                                                
+                                                                                                                                                              
