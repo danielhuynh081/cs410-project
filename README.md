@@ -34,3 +34,19 @@
 
 
 # Due Sunday 4/20/25
+
+## Environment Setup
+
+To run this project locally, each developer must provide their own Google Cloud service account credentials.
+
+1. Place your credentials JSON file inside a `creds/` folder in the project root.
+
+2. Create a `.env` file (not tracked by Git) in the project root with the following content:
+
+```
+GOOGLE_CREDS_PATH=creds/dataeng-project-assignment-1-e99e41137ae5.json
+```
+
+3. The project will automatically load this path using `python-dotenv`.
+
+**Note:** Do not commit your `.env` file or credentials JSON to version control.
