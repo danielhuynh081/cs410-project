@@ -1,0 +1,207 @@
+[2025-05-28 21:27:21.537568] Starting Stop Event Pipeline...
+✔ Vehicle 2905: 75 records published
+✔ Vehicle 2907: 54 records published
+✔ Vehicle 2908: 65 records published
+✔ Vehicle 2916: 90 records published
+✔ Vehicle 2918: 78 records published
+❌ Vehicle 2923 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 2926: 61 records published
+✔ Vehicle 2927: 35 records published
+✔ Vehicle 2928: 47 records published
+✔ Vehicle 2934: 63 records published
+✔ Vehicle 2935: 39 records published
+✔ Vehicle 2939: 51 records published
+❌ Vehicle 3008 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 3010 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3013: 37 records published
+✔ Vehicle 3017: 65 records published
+✔ Vehicle 3018: 18 records published
+✔ Vehicle 3019: 16 records published
+✔ Vehicle 3023: 19 records published
+❌ Vehicle 3033 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 3037 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3044: 65 records published
+✔ Vehicle 3045: 44 records published
+✔ Vehicle 3051: 19 records published
+✔ Vehicle 3053: 100 records published
+❌ Vehicle 3054 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 3059 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 3105 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 3108 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3110: 20 records published
+❌ Vehicle 3113 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3114: 68 records published
+❌ Vehicle 3118 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 3126 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3127: 23 records published
+❌ Vehicle 3128 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 3130 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3143: 18 records published
+✔ Vehicle 3145: 60 records published
+✔ Vehicle 3148: 103 records published
+✔ Vehicle 3154: 75 records published
+✔ Vehicle 3157: 102 records published
+❌ Vehicle 3163 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3201: 65 records published
+❌ Vehicle 3206 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 3209 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3213: 49 records published
+❌ Vehicle 3217 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 3219 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3222: 131 records published
+✔ Vehicle 3224: 21 records published
+✔ Vehicle 3225: 33 records published
+✔ Vehicle 3229: 132 records published
+❌ Vehicle 3231 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3233: 19 records published
+✔ Vehicle 3239: 18 records published
+✔ Vehicle 3243: 31 records published
+❌ Vehicle 3245 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3246: 61 records published
+✔ Vehicle 3248: 70 records published
+✔ Vehicle 3252: 55 records published
+✔ Vehicle 3256: 91 records published
+❌ Vehicle 3267 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3301: 48 records published
+✔ Vehicle 3303: 43 records published
+✔ Vehicle 3304: 21 records published
+✔ Vehicle 3308: 138 records published
+✔ Vehicle 3310: 82 records published
+✔ Vehicle 3313: 107 records published
+✔ Vehicle 3314: 107 records published
+✔ Vehicle 3320: 49 records published
+✔ Vehicle 3326: 40 records published
+✔ Vehicle 3327: 31 records published
+✔ Vehicle 3401: 21 records published
+✔ Vehicle 3404: 55 records published
+❌ Vehicle 3405 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 3407 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3411: 22 records published
+❌ Vehicle 3419 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3420: 36 records published
+✔ Vehicle 3422: 18 records published
+✔ Vehicle 3511: 32 records published
+❌ Vehicle 3515 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3516: 55 records published
+✔ Vehicle 3517: 35 records published
+✔ Vehicle 3518: 90 records published
+✔ Vehicle 3520: 24 records published
+✔ Vehicle 3524: 91 records published
+❌ Vehicle 3525 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3531: 77 records published
+❌ Vehicle 3533 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 3534 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 3538 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 3542 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 3544 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3545: 69 records published
+❌ Vehicle 3547 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3554: 68 records published
+✔ Vehicle 3559: 18 records published
+✔ Vehicle 3560: 100 records published
+✔ Vehicle 3564: 51 records published
+✔ Vehicle 3566: 90 records published
+✔ Vehicle 3568: 67 records published
+✔ Vehicle 3570: 20 records published
+✔ Vehicle 3571: 24 records published
+❌ Vehicle 3573 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3574: 99 records published
+✔ Vehicle 3601: 43 records published
+❌ Vehicle 3606 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3608: 21 records published
+✔ Vehicle 3615: 35 records published
+✔ Vehicle 3623: 65 records published
+❌ Vehicle 3627 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 3629 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3631: 21 records published
+✔ Vehicle 3632: 61 records published
+❌ Vehicle 3646 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 3650 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3704: 43 records published
+✔ Vehicle 3710: 30 records published
+✔ Vehicle 3714: 44 records published
+✔ Vehicle 3718: 72 records published
+❌ Vehicle 3727 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3730: 43 records published
+✔ Vehicle 3731: 49 records published
+✔ Vehicle 3733: 50 records published
+✔ Vehicle 3736: 11 records published
+✔ Vehicle 3741: 73 records published
+✔ Vehicle 3744: 43 records published
+❌ Vehicle 3757 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 3902 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3903: 100 records published
+✔ Vehicle 3909: 82 records published
+✔ Vehicle 3911: 27 records published
+✔ Vehicle 3912: 50 records published
+✔ Vehicle 3915: 72 records published
+✔ Vehicle 3916: 101 records published
+✔ Vehicle 3921: 91 records published
+✔ Vehicle 3927: 44 records published
+✔ Vehicle 3929: 75 records published
+✔ Vehicle 3930: 31 records published
+✔ Vehicle 3931: 43 records published
+✔ Vehicle 3933: 49 records published
+✔ Vehicle 3938: 139 records published
+❌ Vehicle 3940 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 3944: 49 records published
+✔ Vehicle 3953: 83 records published
+✔ Vehicle 3954: 52 records published
+✔ Vehicle 3955: 21 records published
+✔ Vehicle 3961: 30 records published
+✔ Vehicle 3963: 43 records published
+✔ Vehicle 3964: 138 records published
+✔ Vehicle 4002: 47 records published
+❌ Vehicle 4003 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 4006: 100 records published
+✔ Vehicle 4014: 54 records published
+✔ Vehicle 4015: 73 records published
+✔ Vehicle 4016: 102 records published
+✔ Vehicle 4018: 82 records published
+✔ Vehicle 4020: 40 records published
+❌ Vehicle 4022 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 4023: 68 records published
+✔ Vehicle 4026: 93 records published
+✔ Vehicle 4033: 35 records published
+✔ Vehicle 4036: 111 records published
+✔ Vehicle 4038: 110 records published
+✔ Vehicle 4040: 74 records published
+✔ Vehicle 4043: 107 records published
+✔ Vehicle 4045: 67 records published
+✔ Vehicle 4047: 77 records published
+❌ Vehicle 4051 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 4058: 48 records published
+✔ Vehicle 4059: 75 records published
+❌ Vehicle 4066 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 4067: 57 records published
+✔ Vehicle 4069: 109 records published
+❌ Vehicle 4202 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 4203: 54 records published
+✔ Vehicle 4206: 87 records published
+❌ Vehicle 4207 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 4208 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 4212: 66 records published
+✔ Vehicle 4215: 109 records published
+✔ Vehicle 4217: 40 records published
+❌ Vehicle 4218 failed: HTTP Error 404: NOT FOUND
+✔ Vehicle 4219: 52 records published
+✔ Vehicle 4222: 83 records published
+✔ Vehicle 4224: 40 records published
+✔ Vehicle 4227: 61 records published
+✔ Vehicle 4228: 68 records published
+✔ Vehicle 4230: 83 records published
+✔ Vehicle 4231: 93 records published
+✔ Vehicle 4234: 109 records published
+❌ Vehicle 4305 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 4510 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 4515 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 4516 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 4522 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 4526 failed: HTTP Error 404: NOT FOUND
+❌ Vehicle 99222 failed: HTTP Error 404: NOT FOUND
+⌛ Waiting for all publish futures to complete...
+
+✅ Finished publishing.
+Total records: 8612
+Failures: 58
+Duration: 524.36 seconds
